@@ -1,0 +1,28 @@
+version: "3.8"
+services:
+  db:
+    image: postgres
+    container_name: local_pgdb_projet_friendly
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: s2y-404
+      POSTGRES_PASSWORD: password
+    volumes:
+      - local_pgdata:/var/lib/postgresql/data
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin4_container_projet_friendly
+    restart: always
+    ports:
+      - "8888:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: sydney.marcelin@supdevinci-edu.fr
+      PGADMIN_DEFAULT_PASSWORD: password
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
+
+volumes:
+  local_pgdata:
+  pgadmin-data:
